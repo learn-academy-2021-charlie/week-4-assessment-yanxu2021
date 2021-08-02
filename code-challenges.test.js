@@ -21,7 +21,9 @@ const { range, isArray } = require("lodash")
 // Format: describe("",()=>{test("",()=>{expect(functionName(testData).toEqual(expectResult))})})
 // Input: array Output: array
 // Solution: 
-// how to test a function that output is random?
+// How to test a function that output is random?--》arrayContaining(array) inside the expect()
+// expect(randomShuffles(colors1).toEqual(expect.arrayContaining(["yellow", "blue", "pink", "green"])))
+// expect(randomShuffles(colors2).toContain([ 'indigo', 'saffron', 'periwinkle', 'ochre', 'aquamarine' ]))
 
 var colors1 = ["purple", "blue", "green", "yellow", "pink"]
 // Expected output example (can be a different order): ["yellow", "blue", "pink", "green"]
@@ -32,6 +34,8 @@ describe("The shuffles function.", () =>{
     test("takes in an array, removes the 1st item and shuffles the remaining.", ()=>{
         expect(shuffles(colors1)).toEqual([ 'blue', 'pink', 'green', 'yellow' ])
         expect(shuffles(colors2)).toEqual([ 'indigo', 'saffron', 'periwinkle', 'ochre', 'aquamarine' ])
+        expect(randomShuffles(colors1).toEqual(expect.arrayContaining(["yellow", "blue", "pink", "green"])))
+        expect(randomShuffles(colors2).toContain([ 'indigo', 'saffron', 'periwinkle', 'ochre', 'aquamarine' ]))
     })
 })
 
